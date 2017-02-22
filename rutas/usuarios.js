@@ -102,4 +102,10 @@ router.delete('/usuarios/:usuarioid/registro/:registroid', (req, res) => {
     Usuarios.borraRegistroAsignaturas(usuarioId, registroId, res)
 });
 
+// metodo de autenticacion que se lleva a cabo en el cliente con angular.
+router.post('/autenticacion/:username/:password', (req, res) => {
+    const usuario = req.body.username;
+    const password = req.body.password;
+});
+
 module.exports = router;
