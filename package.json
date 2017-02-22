@@ -1,0 +1,22 @@
+{
+  "name": "interfaz-prototipo",
+  "version": "1.0.0",
+  "description": "prototipo de interfaz en version MEAN",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "body-parser": "*",
+    "passport": "*",
+    "passport-jwt": "*"
+  },
+  "author": "Nicolas Riquelme",
+  "license": "ISC"
+}
