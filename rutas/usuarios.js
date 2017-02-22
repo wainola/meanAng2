@@ -8,7 +8,8 @@ const config = require('../config/database');
 const Usuarios = require('../models/usuarios');
 
 //establecimiento de rutas asociadas a metodos http.
-// METODOS CONCERNIENTES AL LOGGEO DE USUARIOS Y SU REGISTRO EN LA PLATAFORMA.
+
+// registro de usuario para login.
 
 router.post('/registroPlataforma', (req, res) => {
     console.log('Metodo POST');
@@ -29,7 +30,7 @@ router.post('/registroPlataforma', (req, res) => {
 });
 
 // METODOS CONCERNIENTES A LOS REGISTROS GUARDADOS.
-//registro de usuario.
+//registro de asignaturas.
 //--------------------------------------------
 router.post('/usuarios/:usuarioid/registro', (req, res) => {
     // RECORDAR QUE REQ.PARAMS ES PARA LOS PARAMETRO DE LA RUTA INTRODUCIDA.
@@ -48,48 +49,43 @@ router.post('/usuarios/:usuarioid/registro', (req, res) => {
       .exec((err, usuario) => {
           if(err){
               res.json({success:false, msg: err});
+          } if(!usuario){
+              res.json({success:false, msg: 'No hay usuario con ese id'});
           } else {
               Usuarios.addRegistro(usuario, nuevoRegistro);
-              // buscamos el usuario completo para enviarlo en la resputa json con los datos de registro añadidos.
-              Usuarios.find(usuarioId, (err, user) => {
-                  if(err){
-                      res.json({success:false, msg:'No encontre nada'});
-                  } else {
-                      res.json({success:true, msg: user});
-                  }
-              })
+              res.json({success: true, msg:'Registro añadido exitosamente'});
           }
       });
     }
 });
 //obtencion de un usuario.
 //--------------------------------------------
-router.get('/usuarios/:usuarioid/:registroid', (req, res) => {
-    let registroId = req.params.registroid;
-    Usuarios.getRegistroPorId(registroId, (err, registro) => {
-        if(err){
-            res.json({success:false, msg: 'Registro no encontrado'});
+router.get('/usuarios/:usuarioid', (req, res) => {
+    let usuarioId = req.params.usuarioid;
+    Usuarios.getUsuarioPorId(usuarioId, (err, usuario) => {
+        if(err || usuario === null){
+            res.json({success:false, msg: 'Usuario no encontrado'});
         } else {
             console.log('Registro encontrado');
-            res.json({success: true, msg: registro});
+            res.json({success: true, msg: usuario});
         }
     });
 });
 //borrado de un usuario.
 //------------------------------------------
-router.delete('/usuarios/registro/:registroid', (req, res) => {
-    let borrarRegistro = req.params.registroid;
-    Usuarios.borrarUsuarioPorId(borrarRegistro, (err, registroBorrado) => {
+router.delete('/usuarios/:usuarioid', (req, res) => {
+    let borrarUser = req.params.usuarioid;
+    Usuarios.borrarUsuarioPorId(borrarUser, (err, userBorrado) => {
         if(err){
             res.json({success:false, msg:'No se ha podido borrar registro'});
         } else {
-            res.json({success:true, msg: registroBorrado});
+            res.json({success:true, msg: userBorrado});
         }
     });
 })
 //borrado de todos los usuarios.
 //------------------------------------------
-router.delete('/usuarios/registro', (req, res) => {
+router.delete('/usuarios', (req, res) => {
     Usuarios.borrarTodos((err) => {
         if(err){
             res.json({success:false, msg:'No hay usuarios para borrarr'});
@@ -97,6 +93,13 @@ router.delete('/usuarios/registro', (req, res) => {
             res.json({success:true, msg:'Todos los usuarios borrados'});
         }
     });
+});
+
+// borrado de asignaturas.
+router.delete('/usuarios/:usuarioid/registro/:registroid', (req, res) => {
+    let usuarioId = req.params.usuarioid;
+    let registroId = req.params.registroid;
+    Usuarios.borraRegistroAsignaturas(usuarioId, registroId, res)
 });
 
 module.exports = router;

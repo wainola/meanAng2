@@ -76,7 +76,7 @@ module.exports.addUser = function(nuevoUsuarioPlataforma, callback){
     });
 };
 
-module.exports.getUser = function(){}
+module.exports.getListUser = function(){}
 
 // metodos de llamada de la api para el registro de cursos.
 
@@ -88,18 +88,34 @@ module.exports.addRegistro = function(usuario, nuevoregistro){
 }
 // metodo de obtencion de registro.
 //--------------------------------------------------
-module.exports.getRegistroPorId = function(registroId, callback){
-    Usuarios.findById(registroId, callback);
+module.exports.getUsuarioPorId = function(usuarioid, callback){
+    Usuarios.findById(usuarioid, callback);
 }
   
 // metodo para borrar un registro.
 //-------------------------------------------------
-module.exports.borrarUsuarioPorId = function(borrarRegistro, callback){
-    Usuarios.findByIdAndRemove(borrarRegistro, callback);
+module.exports.borrarUsuarioPorId = function(borrarUser, callback){
+    Usuarios.findByIdAndRemove(borrarUser, callback);
 }
 //metodo para borrar todos.
 //------------------------------------------------
 //TODO: de persistir el metodo, borrar con autenticado.
 module.exports.borrarTodos = function(callback){
     Usuarios.find().remove(callback);
+}
+module.exports.borraRegistroAsignaturas= function(usuarioid, registroid, res){
+    Usuarios.findOne({"asignaturasAlumno._id": registroid}, (err, data) => {
+        if(err){
+            res.json({sucess:false, mgs: err});
+        } else {
+           data.asignaturasAlumno.id(registroid).remove();
+           data.save((err, msge) => {
+               if(err){
+                   res.json({success:false, msg:'Hubo algun error'});
+               } else {
+                   res.json({success:true, msg:data});
+               }
+           }); 
+        }
+    });
 }
