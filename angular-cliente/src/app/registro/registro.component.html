@@ -1,3 +1,26 @@
-<p>
-  registro works!
-</p>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6">
+      <div class="jumbotron">
+        <h4 class="display-4 text-center">Registro</h4>
+        <!-- Formulario -->
+        <form [formGroup]="formulario"
+        (ngSubmit)="addDatos()">
+        <div class="form-group">
+          <input type="text" placeholder="nombre" class="form-control" formControlName="nombre">
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="usuario" class="form-control" formControlName="usuario">
+        </div>
+        <div class="form-group">
+          <input type="email" placeholder="correo" class="form-control" formControlName="correo">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="contraseña" class="form-control" formControlName="contraseña">
+        </div>
+        <button type="submit" class="btn btn-success">Registrar</button>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>

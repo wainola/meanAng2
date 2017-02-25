@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // modulo para establecer las rutas.
 import { RouterModule, Routes } from '@angular/router';
@@ -37,7 +37,8 @@ const appRutas: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRutas),
-    FlashMessagesModule
+    FlashMessagesModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
