@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+// importacion de servicios.
+import { ValidacionService } from './servicios/validacion.service';
 
 // estableciendo las rutas para cada componente de la pagina.
 const appRutas: Routes = [
@@ -40,7 +42,10 @@ const appRutas: Routes = [
     FlashMessagesModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  // aca añadimos los servicios que generamos.
+  providers: [
+    ValidacionService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
