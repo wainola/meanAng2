@@ -119,3 +119,6 @@ module.exports.borraRegistroAsignaturas= function(usuarioid, registroid, res){
         }
     });
 }
+module.exports.getUsuarioPorNombre = function(usuario){
+    
+}

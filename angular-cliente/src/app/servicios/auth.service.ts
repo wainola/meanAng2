@@ -16,6 +16,10 @@ export class AuthService {
     console.log('Entre al registro'); // flag de verificacion.
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    
+  }
+  autenticacionUsuario(usuario){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    // trabajamos con observadores desde aqui.
   }
 }

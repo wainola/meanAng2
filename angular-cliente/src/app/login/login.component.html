@@ -1,3 +1,18 @@
-<p>
-  login works!
-</p>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6">
+      <div class="jumbotron">
+        <h4 class="display-4 text-center">Iniciar sesión</h4>
+        <form (submit)="enInicioDeSesion()">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="usuario" [(ngModel)]="usuario" name="usuario">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="contraseña" name="password" [(ngModel)]="password">
+          </div>
+          <button type="submit" class="btn btn-success">Iniciar sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

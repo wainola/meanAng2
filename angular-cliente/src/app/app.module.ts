@@ -15,6 +15,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 // importacion de servicios.
 import { ValidacionService } from './servicios/validacion.service';
+import { AuthService } from './servicios/auth.service';
 
 // estableciendo las rutas para cada componente de la pagina.
 const appRutas: Routes = [
@@ -44,7 +45,8 @@ const appRutas: Routes = [
   ],
   // aca añadimos los servicios que generamos.
   providers: [
-    ValidacionService
+    ValidacionService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
