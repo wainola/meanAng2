@@ -29,7 +29,19 @@ export class LoginComponent {
       usuario: this.usuario,
       password: this.password,
     }
-    console.log(dataUser);
+    this.auth.autenticacionUsuario(dataUser)
+    .subscribe(
+      data => {
+        if(data.success){
+          console.log(data);
+        } else {
+          console.log('No exitoso');
+        }
+      }
+    )
+    // reseteo de campos.
+    this.usuario = "";
+    this.password = "";
   }
   
 

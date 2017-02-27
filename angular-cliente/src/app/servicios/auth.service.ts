@@ -21,5 +21,9 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     // trabajamos con observadores desde aqui.
+    return this.http.post(
+      'http://localhost:3000/usuarios/autenticacion',
+      usuario, {headers: headers})
+      .map(res => res.json());
   }
 }

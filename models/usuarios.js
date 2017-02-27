@@ -119,6 +119,15 @@ module.exports.borraRegistroAsignaturas= function(usuarioid, registroid, res){
         }
     });
 }
-module.exports.getUsuarioPorNombre = function(usuario){
+module.exports.getUsuarioPorNombre = function(usuario, res, req){
+    // recordar que los queries en mongo se inserta un objeto en formato json.
+    const userQuery = {user: usuario};
+    Usuarios.findOne(userQuery, (err, user) => {
+        if(err){
+            res.json({succes: false, msg: err});
+        } else {
+            res.json({success: true, msg: user});
+        }
+    })
     
 }

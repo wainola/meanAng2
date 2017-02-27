@@ -108,7 +108,7 @@ router.post('/autenticacion', (req, res) => {
     const password = req.body.password;
     // Debemos obtener el usuario desde la DB.
     // luego comparar contraseñas.
-    Usuarios.getUsuarioPorNombre();
+    Usuarios.getUsuarioPorNombre(usuario);
 });
 
 module.exports = router;
