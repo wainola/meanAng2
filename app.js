@@ -26,7 +26,14 @@ const app = express();
 // variable que referencia la ruta hacia los metodos de la base de datos.
 const usuarios = require('./rutas/usuarios');
 // puerto que usa la aplicacion.
-const puerto = 3000;
+// ===============================================
+// PUERTO LOCAL PARA DESARROLLO LOCAL. DESCOMENTAR.
+// ===============================================
+//const puerto = 3000;
+// ===============================================
+// PUERTO REMOTO EN HEROKU PARA DEPLOY.
+// ==============================================
+const puerto = process.env.PORT || 8080;
 // generacion de cors.
 app.use(cors());
 //establecimiento de referencia al directorio de archivos estaticos.

@@ -11,4 +11,13 @@ export class ValidacionService {
     return regex.test(correo);
   }
 
+  validacionData(data){
+    if(data.nombre === undefined || data.usuario === undefined || data.direccion === undefined || data.correo === undefined || data.password === undefined){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
 }

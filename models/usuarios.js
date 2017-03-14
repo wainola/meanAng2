@@ -56,7 +56,7 @@ const EsquemaUsuarios = mongoose.Schema({
         required: true
     },
     direccion: {
-        type: [String],
+        type: String,
         required: true
     },
     asignaturasAlumno: [EsquemaRegistros]
@@ -75,8 +75,6 @@ module.exports.addUser = function(nuevoUsuarioPlataforma, callback){
         });
     });
 };
-
-module.exports.getListUser = function(){}
 
 // metodos de llamada de la api para el registro de cursos.
 
@@ -119,15 +117,15 @@ module.exports.borraRegistroAsignaturas= function(usuarioid, registroid, res){
         }
     });
 }
-module.exports.getUsuarioPorNombre = function(usuario, res, req){
+module.exports.getUsuarioPorNombre = function(usuario, callback){
     // recordar que los queries en mongo se inserta un objeto en formato json.
-    const userQuery = {user: usuario};
-    Usuarios.findOne(userQuery, (err, user) => {
-        if(err){
-            res.json({succes: false, msg: err});
-        } else {
-            res.json({success: true, msg: user});
-        }
-    })
+    const userQuery = {usuario: usuario};
+    Usuarios.findOne(userQuery, callback);
     
+}
+module.exports.comparacionPassword = function(passCandidata, hash, callback){
+    bcrypt.compare(passCandidata, hash, (err, todoCalza) => {
+        if(err) throw err;
+        callback(null, todoCalza);
+    });
 }

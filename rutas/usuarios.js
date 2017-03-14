@@ -18,13 +18,13 @@ router.post('/registroPlataforma', (req, res) => {
         usuario: req.body.usuario,
         correo: req.body.correo,
         password: req.body.password,
-        direccion: req.body.direccion.split(',')
+        direccion: req.body.direccion
     });
     Usuarios.addUser(nuevoUsuarioPlataforma, (err, usuario) => {
         if(err){
             res.json({success:false, msg: "No se pudo añadir usuario"});
         } else {
-            res.json({success: true, msg: usuario});
+            res.json({success: true, msg: "usuario registrado exitosamente"});
         }
     });
 });
@@ -57,6 +57,16 @@ router.post('/usuarios/:usuarioid/registro', (req, res) => {
           }
       });
     }
+});
+// obtencion de varios usuarios.
+router.get('/usuarios', (req, res) => {
+    Usuarios.find((err, usuarios) => {
+        if(err){
+            res.json({success:false, msg: err});
+        }else{
+            res.json({success:true, msg:usuarios});
+        }
+    })
 });
 //obtencion de un usuario.
 //--------------------------------------------
@@ -103,12 +113,47 @@ router.delete('/usuarios/:usuarioid/registro/:registroid', (req, res) => {
 });
 
 // metodo de autenticacion que se lleva a cabo en el cliente con angular.
+
 router.post('/autenticacion', (req, res) => {
-    const usuario = req.body.username;
+    const usuario = req.body.usuario;
     const password = req.body.password;
+    console.log(`
+    El usuario ingresado es ${usuario}.
+    La contraseña ingresada es ${password}.
+    `);
     // Debemos obtener el usuario desde la DB.
     // luego comparar contraseñas.
-    Usuarios.getUsuarioPorNombre(usuario);
+    Usuarios.getUsuarioPorNombre(usuario, (err, usuario) => {
+        if(err) throw err;
+        if(!usuario){
+            console.log("no encontre usuario!");
+            return res.json({success: false, msg: "Usuario no encontrado"});
+        }
+        
+        // comparamos la contraseña recibida, con la contraseña almacenada en el registro.
+        Usuarios.comparacionPassword(password, usuario.password, (err, todoCalza) => {
+            if (err) throw err;
+            if(todoCalza){
+                // creacion del token.
+                const token = jwt.sign(usuario, config.secret, {
+                    expiresIn: 86400
+                });
+                res.json({
+                    success: true,
+                    token: 'JWT ' + token,
+                    usuario: {
+                        id: usuario._id,
+                        nombre: usuario.nombre,
+                        usuario: usuario.usuario,
+                        email: usuario.correo
+                    }
+                });
+            } else {
+                return res.json({success: false, msg: "Contraseña Equivocada"});
+            }
+        });
+
+    });
 });
 
 module.exports = router;

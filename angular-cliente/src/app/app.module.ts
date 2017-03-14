@@ -2,51 +2,51 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+
 // modulo para establecer las rutas.
 import { RouterModule, Routes } from '@angular/router';
+
 // flash messages
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
+// componentes.
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegistroComponent } from './registro/registro.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './componentes/home.component';
+import { RegistroComponent } from './componentes/registro.component';
+import { NavBarComponent } from './componentes/nav-bar.component';
+import { DashboardComponent } from './componentes/dashboard.component';
+import { LoginComponent } from './componentes/login.component';
+
 // importacion de servicios.
 import { ValidacionService } from './servicios/validacion.service';
 import { AuthService } from './servicios/auth.service';
+import { AuthGuardia } from './guardias/auth.guard';
 
-// estableciendo las rutas para cada componente de la pagina.
-const appRutas: Routes = [
-  // primer elemento es la pagina de inicio.
-  { path: '', component: HomeComponent },
-  { path: 'registro', component: RegistroComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'dashboard', component: DashboardComponent }
-];
+// rutas.
+import { rutas } from './app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
-    LoginComponent,
     RegistroComponent,
-    DashboardComponent
+    NavBarComponent,
+    DashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRutas),
+    RouterModule.forRoot(rutas),
     FlashMessagesModule,
     ReactiveFormsModule
   ],
   // aca añadimos los servicios que generamos.
   providers: [
     ValidacionService,
-    AuthService
+    AuthService,
+    AuthGuardia
   ],
   bootstrap: [AppComponent]
 })
