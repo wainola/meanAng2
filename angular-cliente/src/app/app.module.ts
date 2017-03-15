@@ -25,6 +25,12 @@ import { AuthGuardia } from './guardias/auth.guard';
 // rutas.
 import { rutas } from './app.component';
 
+// modulos ng-bootstrap
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MainPageComponent } from './componentes/dashboardComps/main-page.component';
+import { DetallesComponent } from './componentes/dashboardComps/detalles.component';
+import { TODOComponent } from './componentes/dashboardComps/todo.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +39,9 @@ import { rutas } from './app.component';
     NavBarComponent,
     DashboardComponent,
     LoginComponent,
+    MainPageComponent,
+    DetallesComponent,
+    TODOComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +49,8 @@ import { rutas } from './app.component';
     HttpModule,
     RouterModule.forRoot(rutas),
     FlashMessagesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule.forRoot(),
   ],
   // aca añadimos los servicios que generamos.
   providers: [

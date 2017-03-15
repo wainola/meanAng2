@@ -1,29 +1,21 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col">
-            <div class="jumbotron">
-                <h1 class="display-3 text-center">CMS</h1>
-                <p class="lead text-center">CMS, manejador de contenidos armado con <a href="https://expressjs.com/">Express</a>, <a href="https://www.mongodb.com/">Mongo</a> y <a href="https://angular.io/">Angular</a></p>
-                <h3>Caracteristicas:</h3>
-                <ul>
-                    <li>Sistema de login con autenticacion aplicando JWT.</li>
-                    <li>Sistema de gestion interna de data con comunicación directa con la API.</li>
-                    <li>Dashboard de visualización de los datos ingresados.</li>
-                    <li>Extensibilidad</li>
-                </ul>
-                <h3>Soon:</h3>
-                <ul>
-                    <li>Integración con aplicación de escritorio a traves de <a href="https://electron.atom.io/">Electron</a>.</li>
-                    <li>Visualización de datos con libreria <a href="https://d3js.org/">D3.js</a>.</li>
-                </ul>
+            <div class="card mt-3">
+                <div class="card-block">
+                    <h1 class="display-4 text-center">CMS</h1>
+                    <p class="lead text-center">CMS armado con <a href="https://expressjs.com/">Express</a>, <a href="https://www.mongodb.com/">Mongo</a> y <a href="https://angular.io/">Angular</a></p>
 
-                <div class="row">
+                    <div class="row">
                     <div class="col text-center">
                         <button type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>
                         <button type="button" class="btn btn-success"[routerLink]="['/register']">Registrate</button>
                     </div>
                 </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
+

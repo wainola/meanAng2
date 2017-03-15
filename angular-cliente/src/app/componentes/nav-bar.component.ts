@@ -10,6 +10,14 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent {
 
+  isCollapsed:boolean = true;
+  colapsando(){
+    if(this.isCollapsed || !this.isCollapsed){
+      this.isCollapsed = !this.isCollapsed;
+    }
+    return this.isCollapsed;
+  }
+
   constructor(
     private router:Router,
     private flashMsge: FlashMessagesService,

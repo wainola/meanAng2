@@ -29,11 +29,11 @@ const usuarios = require('./rutas/usuarios');
 // ===============================================
 // PUERTO LOCAL PARA DESARROLLO LOCAL. DESCOMENTAR.
 // ===============================================
-//const puerto = 3000;
+const puerto = 3000;
 // ===============================================
 // PUERTO REMOTO EN HEROKU PARA DEPLOY.
 // ==============================================
-const puerto = process.env.PORT || 8080;
+//const puerto = process.env.PORT || 8080;
 // generacion de cors.
 app.use(cors());
 //establecimiento de referencia al directorio de archivos estaticos.

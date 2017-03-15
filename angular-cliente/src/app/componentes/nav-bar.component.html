@@ -1,28 +1,30 @@
-<nav class="navbar navbar-toggleable-md navbar-inverse" style="background-color: #303F9F;">
+<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon" (click)="colapsando()"></span>
   </button>
   <a class="navbar-brand" href="#">Clases</a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse] ="isCollapsed">
     
     <ul class="navbar-nav ml-auto">
       <!-- home -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['/']" class="nav-link"><i class="fa fa-home fa-2x" aria-hidden="true"></i></a>
+        <a [routerLink]="['/']" class="nav-link" (click)="colapsando()">Home</a>
       </li>
       <!-- Registro -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="!auth.sesionIniciada()">
-        <a [routerLink]="['/register']" class="nav-link"><i class="fa fa-file-text fa-2x" aria-hidden="true"></i></a>
+        <a [routerLink]="['/register']" class="nav-link" (click)="colapsando()">Registro</a>
       </li>
       <!-- Dashboard -->
       <li class="nav-item" *ngIf="auth.sesionIniciada()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['/dashboard']" class="nav-link"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
+        <a [routerLink]="['/dashboard']" class="nav-link">Dashboard</a>
       </li>
       <!-- Cierre de sesion -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.sesionIniciada()">
-        <a [routerLink]="['/']" class="nav-link" (click)="onLogedOut()"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
+        <a [routerLink]="['/']" class="nav-link" (click)="onLogedOut()">Cerrar Sesion</a>
       </li>
+
     </ul>
   </div>
 </nav>
+

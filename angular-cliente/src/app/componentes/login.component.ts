@@ -43,7 +43,6 @@ export class LoginComponent {
         //generacion del servicio de autenticacion.
         console.log("Exito!");
         this.auth.guardaDatosUsuario(data.token, data.usuario);
-        this.flasMsg.show("Sesion iniciada", {cssClass: 'alert-success', timeout: 2000});
         this.router.navigate(['/dashboard']);
       }
       else{

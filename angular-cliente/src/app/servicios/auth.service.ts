@@ -19,9 +19,9 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     // PARA EFECTOS DE DEPLOY ESTE NO ES LA URL QUE USAREMOS PARA HACER LA LLAMADA A LA BASE DE DATOS.
     // DESCOMENTAR PARA USAR LOCALMENTE.
-    //return this.http.post('http://localhost:3000/usuarios/registroPlataforma', usuario, {headers: headers})
+    return this.http.post('http://localhost:3000/usuarios/registroPlataforma', usuario, {headers: headers})
     // LLAMADA A LA API EN EL DEPLOY.
-    return this.http.post('usuarios/registroPlataforma', usuario, {headers: headers})
+    //return this.http.post('usuarios/registroPlataforma', usuario, {headers: headers})
     .map(res => res.json());
   }
   autenticacionUsuario(usuario){
@@ -35,9 +35,9 @@ export class AuthService {
     // trabajamos con observadores desde aqui.
     // PARA EFECTOS DE DEPLOY ESTE NO ES LA URL QUE USAREMOS PARA HACER LA LLAMADA A LA BASE DE DATOS.
     // DESCOMENTAR PARA USAR LOCALMENTE.
-    //return this.http.post('http://localhost:3000/usuarios/autenticacion', usuario, {headers: headers})
+    return this.http.post('http://localhost:3000/usuarios/autenticacion', usuario, {headers: headers})
     // LLAMADA A LA API EN EL DEPLOY.
-    return this.http.post('usuarios/autenticacion', usuario, {headers: headers})
+    //return this.http.post('usuarios/autenticacion', usuario, {headers: headers})
       .map(res => res.json());
   }
   guardaDatosUsuario(token, usuario){
