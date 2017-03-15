@@ -19,7 +19,7 @@
       <li class="nav-item" *ngIf="auth.sesionIniciada()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a [routerLink]="['/dashboard']" class="nav-link"><i class="fa fa-user fa-2x" aria-hidden="true"></i></a>
       </li>
-      <!-- Cierre de sesion-->
+      <!-- Cierre de sesion -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.sesionIniciada()">
         <a [routerLink]="['/']" class="nav-link" (click)="onLogedOut()"><i class="fa fa-sign-out fa-2x" aria-hidden="true"></i></a>
       </li>

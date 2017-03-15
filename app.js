@@ -53,10 +53,14 @@ app.use('/usuarios', usuarios);
 app.get('/', (req, res) => {
     res.send('Principal Endpoint :)');
 });
+
+//configuracion de directorio de archivos estaticos. Angular 2.
+app.use(express.static(path.join(__dirname, 'public')));
+
 // luego del build, todas las rutas dirigen al mismo archivo que es donde el cliente esta construido.
-/*app.get('*', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
-});*/
+});
 
 //############ Inicializacion del servidor.
 app.listen(puerto, () => {
