@@ -1,23 +1,27 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3 mt-3">
-            <ul class="list-group">
-                <a href="#" class="list-group-item">
-                    Clases
-                </a>
-                <a href="#" class="list-group-item">
-                    Alumnos
-                </a>
-                <a href="#" class="list-group-item">
-                    Calificaciones
-                </a>
-                <a href="#" class="list-group-item">
-                    Notas
-                </a>
-            </ul>
-        </div>
-        <div class="col">
-            
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-block">
+                <table class="table">
+                    <thead class="bg-warning">
+                        <tr style="color:white">
+                            <th></th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Asignaturas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let d of dataApi; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{d.nombre}}</td>
+                            <td>{{d.correo}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+<button type="button" class="btn btn-warning" (click)="clickData()">Ver datos</button>

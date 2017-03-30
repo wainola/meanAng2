@@ -30,6 +30,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MainPageComponent } from './componentes/dashboardComps/main-page.component';
 import { DetallesComponent } from './componentes/dashboardComps/detalles.component';
 import { TODOComponent } from './componentes/dashboardComps/todo.component';
+import { ClasesComponent } from './componentes/dashboardComps/clases.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TODOComponent } from './componentes/dashboardComps/todo.component';
     MainPageComponent,
     DetallesComponent,
     TODOComponent,
+    ClasesComponent,
   ],
   imports: [
     BrowserModule,

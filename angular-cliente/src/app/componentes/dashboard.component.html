@@ -1,1 +1,29 @@
-<router-outlet></router-outlet>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-tabs  nav-fill nav-justified">
+                <li class="nav-item">
+                    <a [routerLink]="['main']" class="nav-link"><span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['clases']" class="nav-link"> <span>Clases</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['detalles']" class="nav-link"> <span>Detalles</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a [routerLink]="['todo']" class="nav-link"> <span>Por hacer</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

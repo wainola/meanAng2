@@ -9,6 +9,8 @@ import { LoginComponent } from './componentes/login.component';
 import { MainPageComponent } from './componentes/dashboardComps/main-page.component';
 import { DetallesComponent } from './componentes/dashboardComps/detalles.component';
 import { TODOComponent } from './componentes/dashboardComps/todo.component';
+import { ClasesComponent } from './componentes/dashboardComps/clases.component';
+import { subRutas as childRoutes } from './componentes/dashboard.component';
 // importacion de servicio de proteccion de las rutas.
 import { AuthGuardia } from './guardias/auth.guard';
 
@@ -25,11 +27,6 @@ export const rutas:Routes = [
   {path: "", redirectTo: "home", pathMatch: "full"},
   {path: "home", component: HomeComponent},
   {path: "register", component: RegistroComponent},
-  {path: "dashboard", component: DashboardComponent, canActivate:[AuthGuardia], children: [
-    {path: "", redirectTo: "main", pathMatch: "full"},
-    {path: "main", component: MainPageComponent},
-    {path: "detalles", component: DetallesComponent},
-    {path: "todo", component: TODOComponent}
-  ]},
+  {path: "dashboard", component: DashboardComponent, canActivate:[AuthGuardia], children: childRoutes},
   {path: "login", component: LoginComponent}
 ]

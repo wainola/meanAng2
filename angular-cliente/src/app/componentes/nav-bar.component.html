@@ -1,4 +1,4 @@
-<nav class="navbar navbar-toggleable-sm navbar-light bg-faded">
+<nav class="navbar navbar-toggleable-sm navbar-inverse bg-faded" style="background-color: #e74c3c">
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon" (click)="colapsando()"></span>
   </button>
@@ -7,6 +7,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse] ="isCollapsed">
     
     <ul class="navbar-nav ml-auto">
+      <!-- boton que comprime sidebar -->
       <!-- home -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
         <a [routerLink]="['/']" class="nav-link" (click)="colapsando()">Home</a>
@@ -23,7 +24,6 @@
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.sesionIniciada()">
         <a [routerLink]="['/']" class="nav-link" (click)="onLogedOut()">Cerrar Sesion</a>
       </li>
-
     </ul>
   </div>
 </nav>
