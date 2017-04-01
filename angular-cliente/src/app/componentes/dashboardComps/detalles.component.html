@@ -1,3 +1,53 @@
-<p>
-  detalles works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card mt-3 card-outline-primary">
+        <div class="card-header">
+          <h4>Detalles Alumno</h4>
+        </div>
+        <div class="card-block">
+          <div class="row">
+            <div class="col">
+              <div class="card">
+                <div class="card-block">
+                  <div class="row">
+                    <div class="col">
+                    <h2>Nombre:</h2>
+                    <p class="h4">{{usuario.nombre}}</p>
+                    <h2>Correo electrónico:</h2>
+                    <p class="h5">{{usuario.correo}}</p>
+                    <h2>Nombre de usuario:</h2>
+                    <p class="h5">{{usuario.usuario}}</p>
+                    <h2>Dirección:</h2>
+                    <p class="h5">{{usuario.direccion}}</p>
+                  </div>
+                  <div class="col">
+                    <table class="table text-center">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Curso</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let ramo of usuario.asignaturas; let i = index" class="text-left">
+                          <td>{{i + 1}}</td>
+                          <td>{{ramo.curso}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer clearfix">
+          <button type="button" (click)="retornarMain()">Volver</button>
+          <button type="button" (click)="editarData()" class="float-right">Editar datos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

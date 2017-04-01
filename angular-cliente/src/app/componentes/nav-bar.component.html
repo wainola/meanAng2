@@ -18,7 +18,7 @@
       </li>
       <!-- Dashboard -->
       <li class="nav-item" *ngIf="auth.sesionIniciada()" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-        <a [routerLink]="['/dashboard']" class="nav-link">Dashboard</a>
+        <a [routerLink]="['/dashboard']" class="nav-link" (click)="colapsando()">Dashboard</a>
       </li>
       <!-- Cierre de sesion -->
       <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.sesionIniciada()">

@@ -21,6 +21,7 @@ import { LoginComponent } from './componentes/login.component';
 import { ValidacionService } from './servicios/validacion.service';
 import { AuthService } from './servicios/auth.service';
 import { AuthGuardia } from './guardias/auth.guard';
+import { InfoDetallesService } from './servicios/informacion.service';
 
 // rutas.
 import { rutas } from './app.component';
@@ -58,7 +59,8 @@ import { ClasesComponent } from './componentes/dashboardComps/clases.component';
   providers: [
     ValidacionService,
     AuthService,
-    AuthGuardia
+    AuthGuardia,
+    InfoDetallesService
   ],
   bootstrap: [AppComponent]
 })

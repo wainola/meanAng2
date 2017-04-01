@@ -2,20 +2,25 @@
     <div class="col">
         <div class="card">
             <div class="card-block">
-                <table class="table">
+                <table class="table text-left">
                     <thead class="bg-warning">
                         <tr style="color:white">
                             <th></th>
                             <th>Nombre</th>
                             <th>Correo</th>
-                            <th>Asignaturas</th>
+                            <th>Asignaturas Inscritas</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let d of dataApi; let i = index">
                             <td>{{i+1}}</td>
-                            <td>{{d.nombre}}</td>
+                            <td #d._id id="{{d._id}}">{{d.nombre}}</td>
                             <td>{{d.correo}}</td>
+                            <td>{{d.asignaturasAlumno.length}}</td>
+                            <td>
+                                <button type="button" (click)="editarData(d._id)">Detalles</button> / <button type="button" (click)="eliminarData()">Chequear</button>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
