@@ -57,9 +57,8 @@ export class MainPageComponent implements OnInit{
         dataUsuarioObtenido.msg.asignaturasAlumno
         )
       localStorage.setItem('dataUserTabla', JSON.stringify(this.dataUnUsuario));
+      this.router.navigate(['../detalles'], {relativeTo:this.ruta});
     });
-    this.router.navigate(['../detalles'], {relativeTo:this.ruta});
-
   }
   eliminarData(){
     

@@ -28,6 +28,9 @@ import { rutas } from './app.component';
 
 // modulos ng-bootstrap
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
+// componentes del dashboard
 import { MainPageComponent } from './componentes/dashboardComps/main-page.component';
 import { DetallesComponent } from './componentes/dashboardComps/detalles.component';
 import { TODOComponent } from './componentes/dashboardComps/todo.component';
@@ -60,7 +63,8 @@ import { ClasesComponent } from './componentes/dashboardComps/clases.component';
     ValidacionService,
     AuthService,
     AuthGuardia,
-    InfoDetallesService
+    InfoDetallesService,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })
